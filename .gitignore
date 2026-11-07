@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+.vs/
+.git/
+*.user
+*.suo
+*.log
+*.backup
+*.before-fix
+.env
+.env.*
+**/storage.sqlite
+**/*.db
+**/*.mdf
+**/*.ldf

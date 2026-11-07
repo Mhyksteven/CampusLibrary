@@ -1,0 +1,80 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - CampusLibrary</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="sidebar-brand" asp-controller="Books"
+               asp-action="Index">
+                <span class="brand-icon">📚</span>
+                <span>
+                    <strong>CampusLibrary</strong>
+                    <small>LIBRARY MANAGEMENT</small>
+                </span>
+            </a>
+
+            <div class="nav-caption">WORKSPACE</div>
+
+            <nav class="sidebar-nav">
+                <a asp-controller="Books" asp-action="Index"
+                   class="sidebar-link">
+                    <span>▦</span> Dashboard
+                </a>
+                <a asp-controller="Books" asp-action="Index"
+                   class="sidebar-link">
+                    <span>▤</span> Book Collection
+                </a>
+                <a asp-controller="Books" asp-action="Create"
+                   class="sidebar-link">
+                    <span>＋</span> Add New Book
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-avatar">CL</div>
+                <div>
+                    <strong>Library Admin</strong>
+                    <small>Administrator</small>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <div class="topbar-title">
+                    Campus Library Management System
+                </div>
+                <div class="topbar-status">
+                    <span class="status-dot"></span>
+                    Local System
+                </div>
+            </header>
+
+            <main class="page-content">
+                @RenderBody()
+            </main>
+
+            <footer class="app-footer">
+                © @DateTime.Now.Year CampusLibrary.
+                Built with ASP.NET Core MVC.
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
