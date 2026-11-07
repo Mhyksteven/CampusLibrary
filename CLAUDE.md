@@ -1,46 +1,56 @@
-# CampusLibrary — Claude Code Project Instructions
+﻿# CampusLibrary - Claude Code Instructions
 
 ## Project Overview
 
-CampusLibrary is an ASP.NET Core MVC library management system built with .NET 10, Entity Framework Core, and SQL Server LocalDB.
+CampusLibrary is a library book management system created using
+ASP.NET Core MVC, .NET 10, Entity Framework Core, and SQL Server LocalDB.
 
-The project uses the Service–Repository Pattern to organize the code and separate business logic from database operations.
+The project follows the Service-Repository Pattern.
 
 ## Project Structure
 
-- `src/CampusLibrary.Domain` — Book entity and interfaces
-- `src/CampusLibrary.Application` — Book service and business logic
-- `src/CampusLibrary.Infrastructure` — Book repository, EF Core context, and migrations
-- `src/CampusLibrary.Web` — MVC controllers, Razor views, REST API, and UI
+- src/CampusLibrary.Domain - Book entity and interfaces
+- src/CampusLibrary.Application - Business logic and BookService
+- src/CampusLibrary.Infrastructure - Repository, DbContext, and migrations
+- src/CampusLibrary.Web - MVC controllers, Razor views, REST API, and UI
+- android/ - Android Kotlin client
+- docs/reports/ - Development documentation
 
-## Development Guidelines
+## Coding Guidelines
 
-- Keep the Domain project independent of database-specific code.
-- Use dependency injection for repositories and services.
-- Use async methods for database operations.
-- Follow the existing Service–Repository Pattern.
-- Reuse the existing Book entity and database context.
-- Avoid unnecessary dependencies.
-- Do not store API keys or passwords in source files.
+- Keep Domain independent of Infrastructure.
+- Use dependency injection.
+- Use asynchronous database operations.
+- Keep business logic in the service layer.
+- Keep database operations in the repository layer.
+- Validate book information before saving.
+- Do not put passwords or API keys in source code.
+- Do not delete existing data or migrations without permission.
+- Build and test changes before reporting success.
 
-## Build and Run
+## Build
 
-To build:
+Run from the repository root:
 
-`dotnet build CampusLibrary.sln`
+dotnet build CampusLibrary.sln
 
-To apply database migrations:
+## Database
 
-`dotnet ef database update --project src/CampusLibrary.Infrastructure --startup-project src/CampusLibrary.Web`
+dotnet ef database update --project src/CampusLibrary.Infrastructure --startup-project src/CampusLibrary.Web
 
-To run the application:
+## Run Web Application
 
-`dotnet run --project src/CampusLibrary.Web`
+dotnet run --project src/CampusLibrary.Web
 
 ## REST API
 
-The web application includes book management API endpoints under `/api/books`.
+GET /api/books
+GET /api/books/{id}
+POST /api/books
+PUT /api/books/{id}
+DELETE /api/books/{id}
 
-## Project Goal
+## Current Notes
 
-Maintain a working library management system that supports adding, viewing, editing, and deleting book records.
+The MVC application and GET /api/books have been manually tested.
+Other API methods and the Android application require separate verification.
